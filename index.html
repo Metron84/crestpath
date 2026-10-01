@@ -1,162 +1,279 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>The Crest blueprint</title>
-<meta name="theme-color" content="#1D2A28">
-<meta name="description" content="Every club, every tap, every route home in The Crest.">
+<title>Crest paths</title>
+<meta name="theme-color" content="#0A111F">
+<meta name="description" content="What to tap to land each club in The Crest.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Crest Paths">
-
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
---bg:#E7EAE3;--panel:#F3F5F0;--ink:#1D2A28;--soft:#5A6B67;--line:#C8CFC3;
---a:#2F5D50;--both:#C9963A;--b:#56708F;--warn:#A24A3A;--road:#3B4744}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151D1C;--panel:#1D2826;--ink:#E3E8E2;--soft:#9AAAA5;--line:#33413E;--a:#6FAE96;--both:#E0B35A;--b:#8DA6C6;--warn:#D9826F;--road:#C7D0CB}}
-:root[data-theme="dark"]{--bg:#151D1C;--panel:#1D2826;--ink:#E3E8E2;--soft:#9AAAA5;--line:#33413E;--a:#6FAE96;--both:#E0B35A;--b:#8DA6C6;--warn:#D9826F;--road:#C7D0CB}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*,*:before,*:after{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Montserrat,"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:1.55}
-main{max-width:1080px;margin:0 auto;padding:28px 18px 80px}
-h1{font-size:clamp(34px,8vw,64px);font-weight:800;letter-spacing:-.03em;line-height:.98;margin:0 0 12px}
-h2{font-size:clamp(22px,4.5vw,30px);font-weight:700;letter-spacing:-.02em;margin:0 0 6px}
-h3{font-size:16px;font-weight:700;margin:0 0 4px}
-p{margin:0 0 10px;max-width:68ch}
-.lede{color:var(--soft);font-size:16px;max-width:60ch}
-section{margin-top:56px}
-.sub{color:var(--soft);margin-bottom:18px}
-ul.facts{list-style:none;padding:0;margin:0;display:grid;gap:8px}
-ul.facts li{padding:10px 14px;background:var(--panel);border-left:4px solid var(--a);border-radius:2px 8px 8px 2px}
-ul.facts li.w{border-left-color:var(--warn)}
-ul.facts b{font-weight:700}
-.key{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--soft);margin:10px 0 0}
-.key span:before{content:"";display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c)}
-/* hero route */
-.hero{margin-top:26px;background:var(--panel);border-radius:14px;padding:16px 16px 10px}
-.hero-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
-select,input{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-height:40px}
-select:focus-visible,input:focus-visible,button:focus-visible{outline:3px solid var(--both);outline-offset:2px}
-.verdict{font-weight:600}
-.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.route{display:block;min-width:760px;width:100%;height:auto}
-.route text{font-family:Montserrat,sans-serif;fill:var(--soft)}
-/* flow */
-.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;counter-reset:s}
-.step{background:var(--panel);border-radius:10px;padding:12px;position:relative}
-.step:before{counter-increment:s;content:counter(s);font-weight:800;font-size:22px;color:var(--a);display:block;line-height:1}
-.step small{color:var(--soft);display:block;margin-top:4px;font-size:12.5px;line-height:1.4}
-/* pressure bars */
-.bars{display:grid;gap:7px}
-.bar{display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
-@media(min-width:720px){.bar{grid-template-columns:230px 1fr 52px;align-items:center;gap:12px}}
-.bar .lbl{font-size:13.5px;font-weight:600}
-.bar .lbl em{font-style:normal;color:var(--warn);font-weight:700;font-size:11.5px;margin-left:6px}
-.track{display:flex;height:16px;border-radius:5px;overflow:hidden;background:var(--line)}
-.track i{display:block;height:100%}
-.bar .pct{font-size:12px;color:var(--soft);text-align:right}
-/* wells */
-.wells{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
-.well{background:var(--panel);border-radius:10px;padding:12px 14px;border-top:3px solid var(--b)}
-.well.twin{border-top-color:var(--warn)}
-.well ul{margin:6px 0 0;padding-left:18px}
-.well .tag{font-size:12px;color:var(--warn);font-weight:600}
-/* tables */
-.tbl{width:100%;border-collapse:collapse;min-width:780px}
-.tbl th,.tbl td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left;font-size:13px;vertical-align:middle}
-.tbl th{font-size:12px;color:var(--soft);font-weight:600}
-.tbl td.n{text-align:right;font-variant-numeric:tabular-nums}
-.taps{display:flex;gap:2px}
-.taps i{width:13px;height:18px;border-radius:3px;background:var(--c);display:block;position:relative}
-.taps i.d{outline:2px solid var(--ink);outline-offset:-1px}
-.taps i.door{border-radius:3px 3px 7px 7px}
-.taps i.sep{margin-left:5px}
-.controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-.room{display:inline-block;min-width:44px;text-align:center;border-radius:6px;padding:1px 6px;font-weight:600}
-.r100{background:color-mix(in srgb,var(--a) 25%,transparent)}
-.r80{background:color-mix(in srgb,var(--both) 25%,transparent)}
-.rlow{background:color-mix(in srgb,var(--warn) 25%,transparent)}
-.miss{color:var(--warn);font-weight:600;font-size:12px}
-ol.fix{padding-left:22px;margin:0;display:grid;gap:10px}
-ol.fix li{padding-left:4px}
-ol.fix b{display:block}
-footer{margin-top:60px;color:var(--soft);font-size:12.5px}
-button.lnk{font:inherit;background:none;border:0;color:var(--ink);text-decoration:underline;padding:0;cursor:pointer;text-align:left}
-@media (prefers-reduced-motion:no-preference){.walk{stroke-dasharray:1600;stroke-dashoffset:1600;animation:walk 1.4s ease-out forwards}@keyframes walk{to{stroke-dashoffset:0}}}
-</style></head><body><main>
+:root {
+  --cream: #F2EDE4;
+  --navy: #0A111F;
+  --red: #D8232A;
+  --muted: rgba(10, 17, 31, 0.62);
+  --line: rgba(10, 17, 31, 0.14);
+  --panel: #fffaf3;
+  --pad-top: env(safe-area-inset-top, 0px);
+  --pad-bot: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --cream: #0A111F;
+    --navy: #F2EDE4;
+    --muted: rgba(242, 237, 228, 0.62);
+    --line: rgba(242, 237, 228, 0.16);
+    --panel: #142038;
+  }
+}
+:root[data-theme="dark"] {
+  --cream: #0A111F;
+  --navy: #F2EDE4;
+  --muted: rgba(242, 237, 228, 0.62);
+  --line: rgba(242, 237, 228, 0.16);
+  --panel: #142038;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-padding-top: calc(12px + var(--pad-top)); }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--navy);
+  font-family: Montserrat, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+main { max-width: 760px; margin: 0 auto; padding: calc(24px + var(--pad-top)) 18px calc(72px + var(--pad-bot)); }
+h1 { font-size: clamp(36px, 9vw, 64px); font-weight: 800; letter-spacing: -0.03em; line-height: 0.98; margin: 0 0 8px; }
+h2 { font-size: clamp(22px, 4.5vw, 28px); font-weight: 700; letter-spacing: -0.02em; margin: 0 0 8px; }
+h3 { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 10px; color: var(--muted); }
+.lede { color: var(--muted); font-size: 18px; margin: 0 0 22px; max-width: 36ch; }
+section { margin-top: 48px; }
+.sub { color: var(--muted); margin: 0 0 16px; }
+label { display: block; font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
+input, select, button { font: inherit; color: var(--navy); }
+input, select {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+}
+input:focus-visible, select:focus-visible, button:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+}
+.find { display: grid; gap: 10px; margin-bottom: 16px; }
+@media (min-width: 640px) { .find { grid-template-columns: 1fr 1fr; } }
+.modes { display: flex; gap: 8px; margin: 0 0 18px; }
+.modes button {
+  flex: 1;
+  min-height: 48px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: transparent;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+}
+.modes button.on-land { background: var(--red); color: #fff; border-color: var(--red); }
+.modes button.on-file { background: var(--navy); color: var(--cream); border-color: var(--navy); }
+.club-head { margin-bottom: 14px; }
+.club-head h2 { font-size: clamp(28px, 7vw, 44px); margin-bottom: 4px; }
+.meta { color: var(--muted); margin: 0 0 8px; }
+.alert {
+  background: var(--panel);
+  border-left: 4px solid var(--red);
+  border-radius: 2px 10px 10px 2px;
+  padding: 10px 14px;
+  margin: 0 0 16px;
+  font-weight: 600;
+}
+.note { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+.block { background: var(--panel); border-radius: 14px; padding: 16px; margin-bottom: 12px; }
+.block.doors { box-shadow: inset 4px 0 0 var(--red); }
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px 12px;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.row:last-child { border-bottom: 0; padding-bottom: 0; }
+.row:first-child { padding-top: 0; }
+.row.changed .tap { text-decoration: underline; text-underline-offset: 3px; }
+.pair { color: var(--muted); font-size: 14px; }
+.tap { font-weight: 800; font-size: 18px; letter-spacing: -0.02em; }
+.other { color: var(--muted); font-size: 13px; grid-column: 1 / -1; margin-top: -6px; }
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-left: 8px;
+  vertical-align: 2px;
+}
+.order { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
+.glance { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.glance span {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--navy) 8%, transparent);
+}
+.glance span.door { background: color-mix(in srgb, var(--red) 14%, transparent); }
+.glance span.changed { outline: 2px solid var(--red); }
+.flow { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (min-width: 640px) { .flow { grid-template-columns: repeat(4, 1fr); } }
+.step { background: var(--panel); border-radius: 12px; padding: 12px; }
+.step b { display: block; font-size: 22px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+.step small { color: var(--muted); font-size: 13px; }
+.controls { display: grid; gap: 8px; margin-bottom: 12px; }
+@media (min-width: 640px) { .controls { grid-template-columns: 1fr 1fr 1fr; } }
+.tbl { width: 100%; border-collapse: collapse; }
+.tbl th, .tbl td { padding: 10px 8px; border-bottom: 1px solid var(--line); text-align: left; font-size: 14px; vertical-align: top; }
+.tbl th { font-size: 12px; color: var(--muted); font-weight: 600; }
+.tbl td.doors { font-size: 13px; font-weight: 600; }
+button.lnk {
+  font: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--navy);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  text-align: left;
+}
+.miss { color: var(--red); font-weight: 700; font-size: 13px; }
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+details { background: var(--panel); border-radius: 14px; padding: 14px 16px; margin-top: 12px; }
+details + details { margin-top: 8px; }
+summary { font-weight: 700; cursor: pointer; }
+details p, details ul { margin: 10px 0 0; color: var(--muted); font-size: 14px; }
+details ul { padding-left: 18px; }
+.bars { display: grid; gap: 8px; margin-top: 10px; }
+.bar { display: grid; gap: 4px; }
+.bar .lbl { font-size: 13px; font-weight: 600; }
+.track { display: flex; height: 12px; border-radius: 4px; overflow: hidden; background: var(--line); }
+.track i { display: block; height: 100%; }
+.wells { display: grid; gap: 10px; margin-top: 10px; }
+@media (min-width: 640px) { .wells { grid-template-columns: 1fr 1fr; } }
+.well { border-top: 3px solid var(--navy); padding-top: 8px; }
+.well.twin { border-top-color: var(--red); }
+footer { margin-top: 48px; color: var(--muted); font-size: 13px; }
+.empty { color: var(--muted); padding: 16px 0; }
+</style>
+</head>
+<body>
+<main>
+<h1>Crest paths</h1>
+<p class="lede">What to tap to land each club.</p>
 
-<h1>The Crest blueprint</h1>
-<p class="lede">Every club, every tap, every route home. Built from the live vectors (self 0.6, others 0.4).</p>
-
-<div class="hero">
-  <div class="hero-top">
-    <label>Walk a club's road <select id="heroSel" aria-label="Choose a club"></select></label>
-    <span class="verdict" id="heroVerdict"></span>
+<div class="find">
+  <div>
+    <label for="q">Search a club</label>
+    <input id="q" type="search" placeholder="Chelsea, Everton, Bayern" autocomplete="off">
   </div>
-  <div class="scroll"><svg class="route" id="heroSvg" viewBox="0 0 1000 250" role="img" aria-label="The club's 18 taps drawn as a road"></svg></div>
-  <div class="key"><span style="--c:var(--a)">Top option (Fun, Moments, People…)</span><span style="--c:var(--both)">Both</span><span style="--c:var(--b)">Bottom option (Work, Surviving, Quiet…)</span></div>
+  <div>
+    <label for="clubSel">Or pick one</label>
+    <select id="clubSel"></select>
+  </div>
 </div>
 
-<section>
-<h2>What the sheet says</h2>
-<p class="sub">Computed live from the 183 file paths and 25 reroutes below.</p>
-<ul class="facts" id="facts"></ul>
-</section>
+<div class="modes" role="group" aria-label="Which path">
+  <button type="button" id="modeLand">To land this club</button>
+  <button type="button" id="modeFile">Straight file path</button>
+</div>
+
+<article id="recipe" aria-live="polite"></article>
 
 <section>
 <h2>The journey</h2>
-<p class="sub">One road, eight stops. Doors have no Both.</p>
+<p class="sub">Four stops. Likes and football come in adaptive order. Tap the answers on this page when the card appears.</p>
 <div class="flow">
-<div class="step"><h3>Country</h3><small>Opening sheet. Sets which clubs share the room.</small></div>
-<div class="step"><h3>Chip</h3><small>Love, Belonging, Winning, Fortune, Fame and fortune, Belonging and winning.</small></div>
-<div class="step"><h3>Life (5 cards)</h3><small>Fun or Work, Moments or Surviving, People or Quiet, Home or Road, Memory or Tomorrow.</small></div>
-<div class="step"><h3>Stake</h3><small>"What will you not give up?" Weights the cards that follow.</small></div>
-<div class="step"><h3>Likes and football (13 cards)</h3><small>Adaptive order. Narrows the pool.</small></div>
-<div class="step"><h3>Doors (5 of the 13)</h3><small>Stands/Fund, Fans/Billionaire, Old/New ground, Sack/Faith, Never/Sign.</small></div>
-<div class="step"><h3>Room</h3><small>Last-room share after 18 taps.</small></div>
-<div class="step"><h3>Result</h3><small>Your club, or "Closest match" under 80%. Then sign up to TRF.</small></div>
+  <div class="step"><b>1</b>Country<small>England, Spain, Italy, Germany, France, Rest of the World, or Everywhere.</small></div>
+  <div class="step"><b>2</b>First chip<small>Love, Belonging, Winning, Fortune, Fame and fortune, or Belonging and winning. This is the stake.</small></div>
+  <div class="step"><b>3</b>Life<small>Five cards: Fun or Work, Moments or Surviving, People or Quiet, Home or the road, Memory or tomorrow.</small></div>
+  <div class="step"><b>4</b>Thirteen more<small>Five of them are doors. No Both on a door.</small></div>
 </div>
-</section>
-
-<section>
-<h2>Card pressure</h2>
-<p class="sub">How the 183 file paths split on each card. A lopsided bar is a card doing little work.</p>
-<div class="bars" id="bars"></div>
-</section>
-
-<section>
-<h2>Gravity wells</h2>
-<p class="sub">Clubs that swallow a neighbour on a straight file path. Red means the paths are identical, so no file tap can separate them.</p>
-<div class="wells" id="wells"></div>
-</section>
-
-<section>
-<h2>Reroutes</h2>
-<p class="sub">The 25 misses. Outlined taps are the changes from the file path that make them Your club.</p>
-<div class="scroll"><table class="tbl" id="rr"><thead><tr><th>Club</th><th>Sheet</th><th>Chip</th><th>Room</th><th>Taps changed</th><th>Route</th></tr></thead><tbody></tbody></table></div>
 </section>
 
 <section>
 <h2>Every club</h2>
-<p class="sub">Filter by league or search. Tap a name to walk it above.</p>
-<div class="controls"><select id="lg" aria-label="League"></select><input id="q" type="search" placeholder="Search a club" aria-label="Search a club"><select id="band" aria-label="Confidence"><option value="">All results</option><option value="100">100%</option><option value="80">80 to 99%</option><option value="low">Closest match (under 80%)</option><option value="miss">Misses</option></select></div>
-<div class="scroll"><table class="tbl" id="all"><thead><tr><th>Club</th><th>League</th><th>Chip</th><th>Room</th><th>Route</th></tr></thead><tbody></tbody></table></div>
+<p class="sub">Door taps are what to pick to land the club. Open a name for the full recipe.</p>
+<div class="controls">
+  <select id="lg" aria-label="League"></select>
+  <select id="sheet" aria-label="Sheet"></select>
+  <select id="band" aria-label="Result">
+    <option value="">All clubs</option>
+    <option value="land">Lands as Your club</option>
+    <option value="miss">Needs a different route</option>
+  </select>
+</div>
+<div class="scroll">
+  <table class="tbl" id="all">
+    <thead>
+      <tr>
+        <th>Club</th>
+        <th>Sheet</th>
+        <th>Chip</th>
+        <th>Doors</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
 </section>
 
 <section>
-<h2>Fix list</h2>
-<ol class="fix" id="fix"></ol>
+<h2>How the sheet behaves</h2>
+<p class="sub">Lab notes. The engine is frozen. This page does not change scoring.</p>
+<details>
+  <summary>Counts from the 183 file paths</summary>
+  <ul id="facts"></ul>
+</details>
+<details>
+  <summary>How each card splits</summary>
+  <div class="bars" id="bars"></div>
+</details>
+<details>
+  <summary>Who swallows whom</summary>
+  <p>On a straight file path these clubs take a neighbour. Red border means the paths are identical.</p>
+  <div class="wells" id="wells"></div>
+</details>
+<details>
+  <summary>Limits of the sheet</summary>
+  <ul>
+    <li>Stands/Fund and Fans/Billionaire always agree on a file path. Both cards read the same power facet.</li>
+    <li>Identical twins cannot be separated by a straight file path. Real fans will not tap exactly alike.</li>
+    <li>Most Premier League file paths tap Billionaire because the power facet leans capital. That is a research score, not a button to flip.</li>
+    <li>Never/Sign and Sack/Faith lean one way for most clubs, so they split few races.</li>
+    <li>Everton holds Charlton, Derby and Sheffield United on the same file path. The landing routes pull them apart on the doors.</li>
+  </ul>
+</details>
 </section>
 
-<footer>Source: Crest paths sheet. Route order: Fun/Work, Moments/Surviving, People/Quiet, Home/Road, Memory/Tomorrow, then 4-3/Grind, Bar/Anyone, Build/Buy, Stroll/Coaster, Plan/Chaos, Stands/Fund, Flair/Defend, Fans/Billionaire, Academy/Transfers, Old/New ground, Rival/Cup, Sack/Faith, Never/Sign.</footer>
+<footer>183 clubs, 25 different routes. Answers matter, not the order after Life. West Ham is still stamped Championship.</footer>
 </main>
 <script>
-const RAW=`Premier League|AFC Bournemouth|F|100|ABABBABBA=BABBB=BA|
+const RAW = `Premier League|AFC Bournemouth|F|100|ABABBABBA=BABBB=BA|
 Premier League|Arsenal|X|71|=AABBAB==ABAB=BBBA|
 Premier League|Aston Villa|M|100|BA===B=BBABBBBABAB|
 Premier League|Brentford|L|2|BBAABBB=AABBB=BAAA|Stevenage
@@ -338,8 +455,8 @@ HNL|GNK Dinamo Zagreb|B|100|A=BAA=AABBA=AAAABA|
 Czech First League|SK Slavia Praha|L|76|=A======BAB=B=BAAA|
 Süper Lig|Beşiktaş|M|81|ABAA=BBBBBBBBBAABA|
 Süper Lig|Fenerbahçe|M|95|A=AB=BBBBBBBBBAABA|
-Süper Lig|Galatasaray|X|99|AAAB=BBBB=BBBBABBB|
-`,RR=`Brentford|Everywhere|L|100|BBAABBB=AAABB=BAAB
+Süper Lig|Galatasaray|X|99|AAAB=BBBB=BBBBABBB|`;
+const RR = `Brentford|Everywhere|L|100|BBAABBB=AAABB=BAAB
 Leeds United|England|B|100|ABBAAAAABBBABAABBB
 Cardiff City|England|L|70|AB=BAB==BAABA=AABA
 Charlton Athletic|England|M|61|ABBAABAAB=BBAAAABA
@@ -363,86 +480,233 @@ Hannover 96|Germany|F|95|ABAA=BBBB=ABBBBABB
 Holstein Kiel|Germany|L|51|ABAA=BB=A=ABA=AABA
 Paris Saint-Germain|France|F|98|AAABB=B=ABB=B=BBBB
 Toulouse FC|France|B|81|=BAABBBBB=BBBBBBBB
-Panathinaikos|Rest of the World|B|74|=B=AA=A=B=B=B=A=BA
-`;
-const CARDS=[["Fun","Work"],["Moments","Surviving"],["People","Quiet"],["Home","The road"],["Memory","Tomorrow"],["4-3","1-0 grind"],["Regulars' bar","Anyone's place"],["Build it","Buy it"],["Stroll","Rollercoaster"],["Fully planned","No plan"],["The stands","A fund"],["Flair","Defending"],["The fans","Billionaire"],["Academy","Transfers"],["Old ground","New 60,000"],["Rival twice","The cup"],["Sack him","Keep faith"],["Never","Sign him"]];
-const DOORS=new Set([10,12,14,16,17]);
-const CHIP={L:"Love",B:"Belonging",W:"Winning",F:"Fortune",M:"Fame and fortune",X:"Belonging and winning"};
-const CTRY={"Premier League":"England","Championship":"England","League One":"England","LaLiga":"Spain","LaLiga 2":"Spain","Serie A":"Italy","Serie B":"Italy","Bundesliga":"Germany","2. Bundesliga":"Germany","Ligue 1":"France","Ligue 2":"France"};
-const clubs=RAW.trim().split("\n").map(l=>{const[lg,n,c,r,p,land]=l.split("|");return{lg,n,c,r:+r,p,land,ct:CTRY[lg]||"Rest of the World"}});
-const rr=RAW&&RR.trim().split("\n").map(l=>{const[n,ct,c,r,p]=l.split("|");return{n,ct,c,r:+r,p}});
-const byName=Object.fromEntries(clubs.map(c=>[c.n,c]));
-const col=v=>v==="A"?"var(--a)":v==="B"?"var(--b)":"var(--both)";
-const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
-const tapsHTML=(p,base)=>'<div class="taps" aria-hidden="true">'+[...p].map((v,i)=>`<i class="${DOORS.has(i)?"door ":""}${i===5?"sep ":""}${base&&base[i]!==v?"d":""}" style="--c:${col(v)}" title="${CARDS[i][0]} / ${CARDS[i][1]}: ${v==="A"?CARDS[i][0]:v==="B"?CARDS[i][1]:"Both"}"></i>`).join("")+"</div>";
-const roomCls=r=>r>=100?"r100":r>=80?"r80":"rlow";
+Panathinaikos|Rest of the World|B|74|=B=AA=A=B=B=B=A=BA`;
+const CARDS = [
+  ["Fun", "Work"],
+  ["Moments", "Surviving"],
+  ["People", "Quiet"],
+  ["Home", "The road"],
+  ["Memory", "Tomorrow"],
+  ["4-3", "1-0 grind"],
+  ["Regulars' bar", "Anyone's place"],
+  ["Build it", "Buy it"],
+  ["Stroll", "Rollercoaster"],
+  ["Fully planned", "No plan"],
+  ["The stands", "A fund"],
+  ["Flair", "Defending"],
+  ["The fans", "Billionaire"],
+  ["Academy", "Transfers"],
+  ["Old ground", "New 60,000"],
+  ["Rival twice", "The cup"],
+  ["Sack him", "Keep faith"],
+  ["Never", "Sign him"]
+];
+const LIFE = [0, 1, 2, 3, 4];
+const DOORS = [10, 12, 14, 16, 17];
+const REST = [5, 6, 7, 8, 9, 11, 13, 15];
+const CHIP = { L: "Love", B: "Belonging", W: "Winning", F: "Fortune", M: "Fame and fortune", X: "Belonging and winning" };
+const CTRY = {
+  "Premier League": "England", Championship: "England", "League One": "England",
+  LaLiga: "Spain", "LaLiga 2": "Spain",
+  "Serie A": "Italy", "Serie B": "Italy",
+  Bundesliga: "Germany", "2. Bundesliga": "Germany",
+  "Ligue 1": "France", "Ligue 2": "France"
+};
+const NOTES = {
+  "West Ham United": "Still stamped Championship. File path is Keep faith. A hammer who wants the terrace stamp still taps Sack him.",
+  Chelsea: "Belonging is the chip that wins the optimizer. Winning still lands them.",
+  "Werder Bremen": "This landing route is not file-faithful. It works by taxing Köln."
+};
+const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+const tapName = (p, i) => (p[i] === "A" ? CARDS[i][0] : p[i] === "B" ? CARDS[i][1] : "Both");
+const otherName = (p, i) => (p[i] === "=" ? "" : p[i] === "A" ? CARDS[i][1] : CARDS[i][0]);
+const pairName = (i) => CARDS[i][0] + " or " + CARDS[i][1];
 
-/* hero */
-const sel=document.getElementById("heroSel");
-sel.innerHTML=clubs.slice().sort((a,b)=>a.n.localeCompare(b.n)).map(c=>`<option>${esc(c.n)}</option>`).join("");
-function hero(name){
-  const c=byName[name];sel.value=name;
-  const svg=document.getElementById("heroSvg");const W=1000,x0=40,dx=(W-80)/17,yA=60,yM=110,yB=160;
-  const pts=[...c.p].map((v,i)=>[x0+i*dx,v==="A"?yA:v==="B"?yB:yM]);
-  let s=`<line x1="${x0}" x2="${W-40}" y1="${yA}" y2="${yA}" stroke="var(--line)" stroke-dasharray="3 6"/><line x1="${x0}" x2="${W-40}" y1="${yB}" y2="${yB}" stroke="var(--line)" stroke-dasharray="3 6"/>`;
-  s+=`<rect x="${x0+4.5*dx-1}" y="30" width="2" height="160" fill="var(--line)"/><text x="${x0}" y="22" font-size="12" font-weight="600">Life</text><text x="${x0+5*dx}" y="22" font-size="12" font-weight="600">Likes and football</text>`;
-  const d=pts.map((p,i)=>(i?"L":"M")+p[0]+" "+p[1]).join(" ");
-  s+=`<path d="${d}" fill="none" stroke="var(--road)" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" opacity=".18"/><path class="walk" d="${d}" fill="none" stroke="var(--road)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>`;
-  pts.forEach((p,i)=>{const v=c.p[i];s+=DOORS.has(i)?`<rect x="${p[0]-8}" y="${p[1]-8}" width="16" height="16" rx="3" fill="${col(v)}"/>`:`<circle cx="${p[0]}" cy="${p[1]}" r="8" fill="${col(v)}"/>`;
-    const lab=v==="A"?CARDS[i][0]:v==="B"?CARDS[i][1]:"Both";
-    s+=`<text transform="translate(${p[0]} 196) rotate(40)" font-size="11">${esc(lab)}</text>`});
-  svg.innerHTML=s;
-  const v=document.getElementById("heroVerdict");
-  v.innerHTML=c.land?`<span class="miss">${c.r}%, lands ${esc(c.land)} on the file path</span>`:`${CHIP[c.c]} chip, ${c.r}% room${c.r<80?", Closest match":""}`;
+const clubs = RAW.trim().split("\n").map((line) => {
+  const [lg, n, c, r, p, land] = line.split("|");
+  return { lg, n, c, r: +r, p, land: land || "", ct: CTRY[lg] || "Rest of the World" };
+});
+const rr = Object.fromEntries(
+  RR.trim().split("\n").map((line) => {
+    const [n, ct, c, r, p] = line.split("|");
+    return [n, { n, ct, c, r: +r, p }];
+  }),
+);
+const byName = Object.fromEntries(clubs.map((c) => [c.n, c]));
+
+let mode = "land";
+let current = "Chelsea";
+
+function viewOf(club) {
+  const route = rr[club.n];
+  const useRoute = mode === "land" && route;
+  const src = useRoute ? route : club;
+  return {
+    club,
+    route,
+    useRoute,
+    ct: useRoute ? route.ct : club.ct,
+    chip: CHIP[src.c],
+    r: src.r,
+    p: src.p,
+    land: club.land
+  };
 }
-sel.onchange=()=>hero(sel.value);hero("Chelsea");
 
-/* facts */
-const N=clubs.length,cnt=(i,v)=>clubs.filter(c=>c.p[i]===v).length;
-const doorMatch=clubs.filter(c=>(c.p[10]==="A")===(c.p[12]==="A")).length;
-const lands=clubs.filter(c=>!c.land),misses=clubs.filter(c=>c.land);
-const groups={};clubs.forEach(c=>{const k=c.ct+"|"+c.p;(groups[k]=groups[k]||[]).push(c.n)});
-const twins=Object.values(groups).filter(g=>g.length>1);const twinN=twins.reduce((a,g)=>a+g.length-1,0);
-const pct=x=>Math.round(x/N*100);
-const facts=[
- [`<b>${N} clubs</b> across ${new Set(clubs.map(c=>c.lg)).size} leagues; ${lands.length} land as Your club on a straight file path.`],
- [`<b>${lands.filter(c=>c.r>=100).length} land at 100%</b>, ${lands.filter(c=>c.r>=80&&c.r<100).length} at 80 to 99%, ${lands.filter(c=>c.r<80).length} show "Closest match".`],
- [`<b>${misses.length} misses</b> need a reroute; ${twinN} of them have a file path identical to a same-country club.`,1],
- [`<b>Stands/Fund and Fans/Billionaire agree on ${doorMatch} of ${N} paths</b>, so two doors carry one signal.`,1],
- [`<b>${pct(cnt(12,"B"))}% of clubs tap Billionaire</b>, including Liverpool, Arsenal and Manchester United.`,1],
- [`<b>Never/Sign is Never for ${pct(cnt(17,"A"))}%</b> and Sack/Faith is Keep faith for ${pct(cnt(16,"B"))}%, so both doors split few clubs.`],
- [`<b>Everton is the deepest well</b>: it holds Charlton, Derby and Sheffield United, and Leeds falls to Derby.`]];
-document.getElementById("facts").innerHTML=facts.map(f=>`<li class="${f[1]?"w":""}">${f[0]}</li>`).join("");
+function rowHTML(p, i, fileP) {
+  const changed = fileP && fileP[i] !== p[i];
+  const other = otherName(p, i);
+  const door = DOORS.includes(i);
+  return `<div class="row${changed ? " changed" : ""}">
+    <span class="pair">${esc(pairName(i))}${door ? '<span class="tag">Door</span>' : ""}</span>
+    <span class="tap">${esc(tapName(p, i))}</span>
+    ${other ? `<span class="other">Not ${esc(other)}</span>` : `<span class="other">Either side. The room is dead and Both is allowed.</span>`}
+  </div>`;
+}
 
-/* bars */
-document.getElementById("bars").innerHTML=CARDS.map((cd,i)=>{const a=cnt(i,"A"),b=cnt(i,"B"),m=N-a-b,top=Math.max(a,b,m);
- return `<div class="bar"><div class="lbl">${esc(cd[0])} / ${esc(cd[1])}${DOORS.has(i)?"<em>door</em>":""}</div><div class="track" role="img" aria-label="${a} ${esc(cd[0])}, ${m} Both, ${b} ${esc(cd[1])}"><i style="width:${a/N*100}%;background:var(--a)"></i><i style="width:${m/N*100}%;background:var(--both)"></i><i style="width:${b/N*100}%;background:var(--b)"></i></div><div class="pct">${Math.round(top/N*100)}% one way</div></div>`}).join("");
+function groupHTML(title, ids, p, fileP, extraClass) {
+  return `<div class="block ${extraClass || ""}"><h3>${title}</h3>${ids.map((i) => rowHTML(p, i, fileP)).join("")}</div>`;
+}
 
-/* wells */
-const wells={};misses.forEach(c=>{(wells[c.land]=wells[c.land]||[]).push(c)});
-document.getElementById("wells").innerHTML=Object.entries(wells).sort((a,b)=>b[1].length-a[1].length).map(([host,list])=>{const h=byName[host];const tw=list.some(c=>c.p===h.p);
- return `<div class="well${tw?" twin":""}"><h3>${esc(host)}</h3>${tw?'<div class="tag">Identical path</div>':""}<ul>${list.map(c=>`<li>${esc(c.n)} <span class="miss">${c.p===h.p?"same path":"differs on "+[...c.p].filter((v,i)=>v!==h.p[i]).length}</span></li>`).join("")}</ul></div>`}).join("");
+function renderRecipe() {
+  const club = byName[current];
+  if (!club) return;
+  const v = viewOf(club);
+  const landing = rr[club.n] || { ct: club.ct, c: club.c, r: club.r, p: club.p };
+  document.getElementById("modeLand").className = mode === "land" ? "on-land" : "";
+  document.getElementById("modeFile").className = mode === "file" ? "on-file" : "";
+  const fileGives = club.land ? `File path lands ${club.land} at ${club.r}%.` : "";
+  let alert = "";
+  if (mode === "land" && club.land) {
+    const same = club.p === landing.p ? [] : [...landing.p].map((ch, i) => (ch !== club.p[i] ? tapName(landing.p, i) : "")).filter(Boolean);
+    const delta = same.length ? ` Same as the file path except ${same.join(", ")}.` : " Country sheet is the change.";
+    alert = `<p class="alert">${esc(fileGives)} To make ${esc(club.n)} Your club: ${esc(landing.ct)}, ${esc(CHIP[landing.c])}, ${landing.r}%.${esc(delta)}</p>`;
+  } else if (mode === "file" && club.land) {
+    alert = `<p class="alert">${esc(fileGives)} Switch to To land this club for the taps that work.</p>`;
+  }
+  const note = NOTES[club.n] ? `<p class="note">${esc(NOTES[club.n])}</p>` : "";
+  const result = club.land && mode === "file"
+    ? `File path. Lands ${club.land}.`
+    : (v.r < 80 ? `Closest match. ${v.r}% of the last room.` : `Your club. ${v.r}% of the last room.`);
+  const fileP = mode === "land" && club.land ? club.p : null;
+  const glance = [...v.p].map((ch, i) => {
+    const changed = fileP && fileP[i] !== ch;
+    return `<span class="${DOORS.includes(i) ? "door" : ""}${changed ? " changed" : ""}">${esc(tapName(v.p, i))}</span>`;
+  }).join("");
+  document.getElementById("recipe").innerHTML = `
+    <div class="club-head">
+      <h2>${esc(club.n)}</h2>
+      <p class="meta">${esc(club.lg)} · ${esc(result)}</p>
+    </div>
+    ${alert}
+    ${note}
+    <div class="block">
+      <h3>Opening sheet</h3>
+      <div class="row"><span class="pair">Country</span><span class="tap">${esc(v.ct)}</span></div>
+      <div class="row"><span class="pair">First chip</span><span class="tap">${esc(v.chip)}</span></div>
+    </div>
+    ${groupHTML("Life", LIFE, v.p, fileP)}
+    ${groupHTML("Doors", DOORS, v.p, fileP, "doors")}
+    ${groupHTML("The rest", REST, v.p, fileP)}
+    <p class="order">Likes and football come in adaptive order. Tap these answers when the card appears. Order on this page is not play order.</p>
+    <div class="glance" aria-hidden="true">${glance}</div>
+  `;
+}
 
-/* reroutes */
-document.querySelector("#rr tbody").innerHTML=rr.map(r=>{const f=byName[r.n];const ch=[...r.p].map((v,i)=>v!==f.p[i]?i:-1).filter(i=>i>=0);
- return `<tr><td><button class="lnk" data-n="${esc(r.n)}">${esc(r.n)}</button></td><td>${esc(r.ct)}</td><td>${CHIP[r.c]}</td><td class="n"><span class="room ${roomCls(r.r)}">${r.r}%</span></td><td>${ch.map(i=>`${esc(r.p[i]==="A"?CARDS[i][0]:r.p[i]==="B"?CARDS[i][1]:"Both")}`).join(", ")||"Country only"}</td><td>${tapsHTML(r.p,f.p)}</td></tr>`}).join("");
+function doorLine(p) {
+  return DOORS.map((i) => tapName(p, i)).join(" · ");
+}
 
-/* all */
-const lg=document.getElementById("lg");lg.innerHTML='<option value="">All leagues</option>'+[...new Set(clubs.map(c=>c.lg))].map(l=>`<option>${esc(l)}</option>`).join("");
-function renderAll(){const L=lg.value,Q=document.getElementById("q").value.toLowerCase(),B=document.getElementById("band").value;
- const rows=clubs.filter(c=>(!L||c.lg===L)&&(!Q||c.n.toLowerCase().includes(Q))&&(!B||(B==="miss"?c.land:!c.land&&(B==="100"?c.r>=100:B==="80"?c.r>=80&&c.r<100:c.r<80))));
- document.querySelector("#all tbody").innerHTML=rows.map(c=>`<tr><td><button class="lnk" data-n="${esc(c.n)}">${esc(c.n)}</button>${c.land?`<br><span class="miss">lands ${esc(c.land)}</span>`:""}</td><td>${esc(c.lg)}</td><td>${CHIP[c.c]}</td><td class="n"><span class="room ${roomCls(c.land?0:c.r)}">${c.r}%</span></td><td>${tapsHTML(c.p)}</td></tr>`).join("")||'<tr><td colspan="5">No clubs match. Clear the search or pick another league.</td></tr>'}
-["lg","q","band"].forEach(id=>document.getElementById(id).addEventListener("input",renderAll));renderAll();
-document.addEventListener("click",e=>{const b=e.target.closest("button.lnk");if(b){hero(b.dataset.n);document.querySelector(".hero").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}});
+function renderIndex() {
+  const L = document.getElementById("lg").value;
+  const S = document.getElementById("sheet").value;
+  const B = document.getElementById("band").value;
+  const Q = document.getElementById("q").value.trim().toLowerCase();
+  const rows = clubs.filter((c) => {
+    const land = rr[c.n] || { ct: c.ct, c: c.c, r: c.r, p: c.p };
+    if (L && c.lg !== L) return false;
+    if (S && land.ct !== S) return false;
+    if (B === "miss" && !c.land) return false;
+    if (B === "land" && c.land) return false;
+    if (Q && !c.n.toLowerCase().includes(Q)) return false;
+    return true;
+  });
+  document.querySelector("#all tbody").innerHTML = rows.map((c) => {
+    const land = rr[c.n] || { ct: c.ct, c: c.c, r: c.r, p: c.p };
+    const result = c.land
+      ? `<span class="miss">File lands ${esc(c.land)}</span><br>Land ${land.r}%`
+      : (land.r < 80 ? `Closest match ${land.r}%` : `Your club ${land.r}%`);
+    return `<tr>
+      <td><button type="button" class="lnk" data-n="${esc(c.n)}">${esc(c.n)}</button></td>
+      <td>${esc(land.ct)}</td>
+      <td>${esc(CHIP[land.c])}</td>
+      <td class="doors">${esc(doorLine(land.p))}</td>
+      <td>${result}</td>
+    </tr>`;
+  }).join("") || `<tr><td colspan="5" class="empty">No clubs match. Clear the search or pick another filter.</td></tr>`;
+}
 
-/* fix list */
-document.getElementById("fix").innerHTML=[
- ["Split the two money doors.",`Stands/Fund and Fans/Billionaire never disagree on a file path. Re-vector them so one is about ownership and the other about who the club serves.`],
- ["Give every identical twin a tiebreaker.",`${twins.length} groups share an exact path inside one country. Each needs at least one card where they differ.`],
- ["Fix Billionaire for fan-owned feelings.",`Liverpool, Arsenal, Manchester United and Spurs all tap Billionaire. Check whether real fans would.`],
- ["Make Never/Sign and Sack/Faith earn their slot.",`Both lean one way for most clubs. Either sharpen the wording or replace one door.`],
- ["Drain the Everton well.",`Pull Charlton, Derby and Sheffield United apart on Old/New ground or the Fans door, as the reroutes already show.`],
- ["Retest after each change.",`Rerun the sheet; the target is fewer than 10 misses with no "Everywhere" reroutes.`]
-].map(([t,d])=>`<li><b>${t}</b>${d}</li>`).join("");
-if("serviceWorker" in navigator){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}
-</script></body></html>
+function openClub(name) {
+  if (!byName[name]) return;
+  current = name;
+  document.getElementById("clubSel").value = name;
+  history.replaceState(null, "", "#" + encodeURIComponent(name));
+  renderRecipe();
+  document.getElementById("recipe").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+}
+
+document.getElementById("clubSel").innerHTML = clubs.slice().sort((a, b) => a.n.localeCompare(b.n)).map((c) => `<option>${esc(c.n)}</option>`).join("");
+document.getElementById("lg").innerHTML = `<option value="">All leagues</option>` + [...new Set(clubs.map((c) => c.lg))].map((l) => `<option>${esc(l)}</option>`).join("");
+const sheets = [...new Set([...clubs.map((c) => c.ct), ...Object.values(rr).map((r) => r.ct)])].sort();
+document.getElementById("sheet").innerHTML = `<option value="">All sheets</option>` + sheets.map((s) => `<option>${esc(s)}</option>`).join("");
+
+document.getElementById("clubSel").onchange = (e) => openClub(e.target.value);
+document.getElementById("modeLand").onclick = () => { mode = "land"; renderRecipe(); };
+document.getElementById("modeFile").onclick = () => { mode = "file"; renderRecipe(); };
+["lg", "sheet", "band"].forEach((id) => document.getElementById(id).addEventListener("change", renderIndex));
+document.getElementById("q").addEventListener("input", () => {
+  renderIndex();
+  const Q = document.getElementById("q").value.trim().toLowerCase();
+  const hit = clubs.find((c) => c.n.toLowerCase() === Q);
+  if (hit && hit.n !== current) openClub(hit.n);
+});
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("button.lnk");
+  if (b) openClub(b.dataset.n);
+});
+
+const N = clubs.length;
+const cnt = (i, v) => clubs.filter((c) => c.p[i] === v).length;
+const doorMatch = clubs.filter((c) => c.p[10] === c.p[12]).length;
+const misses = clubs.filter((c) => c.land);
+const pct = (x) => Math.round((x / N) * 100);
+document.getElementById("facts").innerHTML = [
+  `${N} clubs across ${new Set(clubs.map((c) => c.lg)).size} leagues. ${N - misses.length} land as Your club on a straight file path.`,
+  `${misses.length} need a different route.`,
+  `Stands/Fund and Fans/Billionaire agree on ${doorMatch} of ${N} file paths.`,
+  `${pct(cnt(12, "B"))}% of file paths tap Billionaire.`,
+  `Never is ${pct(cnt(17, "A"))}% of file paths. Keep faith is ${pct(cnt(16, "B"))}%.`
+].map((t) => `<li>${t}</li>`).join("");
+
+document.getElementById("bars").innerHTML = CARDS.map((cd, i) => {
+  const a = cnt(i, "A"), b = cnt(i, "B"), m = N - a - b;
+  return `<div class="bar"><div class="lbl">${esc(cd[0])} or ${esc(cd[1])}</div><div class="track"><i style="width:${a / N * 100}%;background:#0A111F"></i><i style="width:${m / N * 100}%;background:#C9A227"></i><i style="width:${b / N * 100}%;background:#3A4560"></i></div></div>`;
+}).join("");
+
+const wells = {};
+misses.forEach((c) => { (wells[c.land] = wells[c.land] || []).push(c); });
+document.getElementById("wells").innerHTML = Object.entries(wells).sort((a, b) => b[1].length - a[1].length).map(([host, list]) => {
+  const h = byName[host];
+  const twin = h && list.some((c) => c.p === h.p);
+  return `<div class="well${twin ? " twin" : ""}"><strong>${esc(host)}</strong><ul>${list.map((c) => `<li>${esc(c.n)}${h && c.p === h.p ? " (same path)" : ""}</li>`).join("")}</ul></div>`;
+}).join("");
+
+const fromHash = decodeURIComponent((location.hash || "").slice(1));
+if (byName[fromHash]) current = fromHash;
+document.getElementById("clubSel").value = current;
+renderRecipe();
+renderIndex();
+if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+</script>
+</body>
+</html>

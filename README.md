@@ -1,11 +1,11 @@
 # Crest Paths
 
-The Crest blueprint as an installable PWA: every club, every tap, every route home.
+What to tap to land each club in The Crest.
 
-- 183 clubs across 17 leagues, with chip, room share and the 18-tap file path.
-- 25 reroutes for clubs that miss on a straight file path.
-- Live findings, card pressure, gravity wells, full explorer and fix list.
-- Works offline after first load; installs to the home screen on iOS and Android.
+- One club at a time: country, first chip, five Life cards, five doors, then the rest.
+- **To land this club** is the default. Misses use the 25 reroutes.
+- **Straight file path** shows the vector path, even when it loses.
+- 183 clubs, 25 different routes. Works offline after first load.
 
 ## Run locally
 
