@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Crest blueprint</title>
+<meta name="theme-color" content="#1D2A28">
+<meta name="description" content="Every club, every tap, every route home in The Crest.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Crest Paths">
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#E7EAE3;--panel:#F3F5F0;--ink:#1D2A28;--soft:#5A6B67;--line:#C8CFC3;
+--a:#2F5D50;--both:#C9963A;--b:#56708F;--warn:#A24A3A;--road:#3B4744}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151D1C;--panel:#1D2826;--ink:#E3E8E2;--soft:#9AAAA5;--line:#33413E;--a:#6FAE96;--both:#E0B35A;--b:#8DA6C6;--warn:#D9826F;--road:#C7D0CB}}
+:root[data-theme="dark"]{--bg:#151D1C;--panel:#1D2826;--ink:#E3E8E2;--soft:#9AAAA5;--line:#33413E;--a:#6FAE96;--both:#E0B35A;--b:#8DA6C6;--warn:#D9826F;--road:#C7D0CB}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Montserrat,"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:1.55}
+main{max-width:1080px;margin:0 auto;padding:28px 18px 80px}
+h1{font-size:clamp(34px,8vw,64px);font-weight:800;letter-spacing:-.03em;line-height:.98;margin:0 0 12px}
+h2{font-size:clamp(22px,4.5vw,30px);font-weight:700;letter-spacing:-.02em;margin:0 0 6px}
+h3{font-size:16px;font-weight:700;margin:0 0 4px}
+p{margin:0 0 10px;max-width:68ch}
+.lede{color:var(--soft);font-size:16px;max-width:60ch}
+section{margin-top:56px}
+.sub{color:var(--soft);margin-bottom:18px}
+ul.facts{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+ul.facts li{padding:10px 14px;background:var(--panel);border-left:4px solid var(--a);border-radius:2px 8px 8px 2px}
+ul.facts li.w{border-left-color:var(--warn)}
+ul.facts b{font-weight:700}
+.key{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--soft);margin:10px 0 0}
+.key span:before{content:"";display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+/* hero route */
+.hero{margin-top:26px;background:var(--panel);border-radius:14px;padding:16px 16px 10px}
+.hero-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+select,input{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-height:40px}
+select:focus-visible,input:focus-visible,button:focus-visible{outline:3px solid var(--both);outline-offset:2px}
+.verdict{font-weight:600}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.route{display:block;min-width:760px;width:100%;height:auto}
+.route text{font-family:Montserrat,sans-serif;fill:var(--soft)}
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;counter-reset:s}
+.step{background:var(--panel);border-radius:10px;padding:12px;position:relative}
+.step:before{counter-increment:s;content:counter(s);font-weight:800;font-size:22px;color:var(--a);display:block;line-height:1}
+.step small{color:var(--soft);display:block;margin-top:4px;font-size:12.5px;line-height:1.4}
+/* pressure bars */
+.bars{display:grid;gap:7px}
+.bar{display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+@media(min-width:720px){.bar{grid-template-columns:230px 1fr 52px;align-items:center;gap:12px}}
+.bar .lbl{font-size:13.5px;font-weight:600}
+.bar .lbl em{font-style:normal;color:var(--warn);font-weight:700;font-size:11.5px;margin-left:6px}
+.track{display:flex;height:16px;border-radius:5px;overflow:hidden;background:var(--line)}
+.track i{display:block;height:100%}
+.bar .pct{font-size:12px;color:var(--soft);text-align:right}
+/* wells */
+.wells{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.well{background:var(--panel);border-radius:10px;padding:12px 14px;border-top:3px solid var(--b)}
+.well.twin{border-top-color:var(--warn)}
+.well ul{margin:6px 0 0;padding-left:18px}
+.well .tag{font-size:12px;color:var(--warn);font-weight:600}
+/* tables */
+.tbl{width:100%;border-collapse:collapse;min-width:780px}
+.tbl th,.tbl td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left;font-size:13px;vertical-align:middle}
+.tbl th{font-size:12px;color:var(--soft);font-weight:600}
+.tbl td.n{text-align:right;font-variant-numeric:tabular-nums}
+.taps{display:flex;gap:2px}
+.taps i{width:13px;height:18px;border-radius:3px;background:var(--c);display:block;position:relative}
+.taps i.d{outline:2px solid var(--ink);outline-offset:-1px}
+.taps i.door{border-radius:3px 3px 7px 7px}
+.taps i.sep{margin-left:5px}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.room{display:inline-block;min-width:44px;text-align:center;border-radius:6px;padding:1px 6px;font-weight:600}
+.r100{background:color-mix(in srgb,var(--a) 25%,transparent)}
+.r80{background:color-mix(in srgb,var(--both) 25%,transparent)}
+.rlow{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.miss{color:var(--warn);font-weight:600;font-size:12px}
+ol.fix{padding-left:22px;margin:0;display:grid;gap:10px}
+ol.fix li{padding-left:4px}
+ol.fix b{display:block}
+footer{margin-top:60px;color:var(--soft);font-size:12.5px}
+button.lnk{font:inherit;background:none;border:0;color:var(--ink);text-decoration:underline;padding:0;cursor:pointer;text-align:left}
+@media (prefers-reduced-motion:no-preference){.walk{stroke-dasharray:1600;stroke-dashoffset:1600;animation:walk 1.4s ease-out forwards}@keyframes walk{to{stroke-dashoffset:0}}}
+</style></head><body><main>
+
+<h1>The Crest blueprint</h1>
+<p class="lede">Every club, every tap, every route home. Built from the live vectors (self 0.6, others 0.4).</p>
+
+<div class="hero">
+  <div class="hero-top">
+    <label>Walk a club's road <select id="heroSel" aria-label="Choose a club"></select></label>
+    <span class="verdict" id="heroVerdict"></span>
+  </div>
+  <div class="scroll"><svg class="route" id="heroSvg" viewBox="0 0 1000 250" role="img" aria-label="The club's 18 taps drawn as a road"></svg></div>
+  <div class="key"><span style="--c:var(--a)">Top option (Fun, Moments, People…)</span><span style="--c:var(--both)">Both</span><span style="--c:var(--b)">Bottom option (Work, Surviving, Quiet…)</span></div>
+</div>
+
+<section>
+<h2>What the sheet says</h2>
+<p class="sub">Computed live from the 183 file paths and 25 reroutes below.</p>
+<ul class="facts" id="facts"></ul>
+</section>
+
+<section>
+<h2>The journey</h2>
+<p class="sub">One road, eight stops. Doors have no Both.</p>
+<div class="flow">
+<div class="step"><h3>Country</h3><small>Opening sheet. Sets which clubs share the room.</small></div>
+<div class="step"><h3>Chip</h3><small>Love, Belonging, Winning, Fortune, Fame and fortune, Belonging and winning.</small></div>
+<div class="step"><h3>Life (5 cards)</h3><small>Fun or Work, Moments or Surviving, People or Quiet, Home or Road, Memory or Tomorrow.</small></div>
+<div class="step"><h3>Stake</h3><small>"What will you not give up?" Weights the cards that follow.</small></div>
+<div class="step"><h3>Likes and football (13 cards)</h3><small>Adaptive order. Narrows the pool.</small></div>
+<div class="step"><h3>Doors (5 of the 13)</h3><small>Stands/Fund, Fans/Billionaire, Old/New ground, Sack/Faith, Never/Sign.</small></div>
+<div class="step"><h3>Room</h3><small>Last-room share after 18 taps.</small></div>
+<div class="step"><h3>Result</h3><small>Your club, or "Closest match" under 80%. Then sign up to TRF.</small></div>
+</div>
+</section>
+
+<section>
+<h2>Card pressure</h2>
+<p class="sub">How the 183 file paths split on each card. A lopsided bar is a card doing little work.</p>
+<div class="bars" id="bars"></div>
+</section>
+
+<section>
+<h2>Gravity wells</h2>
+<p class="sub">Clubs that swallow a neighbour on a straight file path. Red means the paths are identical, so no file tap can separate them.</p>
+<div class="wells" id="wells"></div>
+</section>
+
+<section>
+<h2>Reroutes</h2>
+<p class="sub">The 25 misses. Outlined taps are the changes from the file path that make them Your club.</p>
+<div class="scroll"><table class="tbl" id="rr"><thead><tr><th>Club</th><th>Sheet</th><th>Chip</th><th>Room</th><th>Taps changed</th><th>Route</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+<section>
+<h2>Every club</h2>
+<p class="sub">Filter by league or search. Tap a name to walk it above.</p>
+<div class="controls"><select id="lg" aria-label="League"></select><input id="q" type="search" placeholder="Search a club" aria-label="Search a club"><select id="band" aria-label="Confidence"><option value="">All results</option><option value="100">100%</option><option value="80">80 to 99%</option><option value="low">Closest match (under 80%)</option><option value="miss">Misses</option></select></div>
+<div class="scroll"><table class="tbl" id="all"><thead><tr><th>Club</th><th>League</th><th>Chip</th><th>Room</th><th>Route</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+<section>
+<h2>Fix list</h2>
+<ol class="fix" id="fix"></ol>
+</section>
+
+<footer>Source: Crest paths sheet. Route order: Fun/Work, Moments/Surviving, People/Quiet, Home/Road, Memory/Tomorrow, then 4-3/Grind, Bar/Anyone, Build/Buy, Stroll/Coaster, Plan/Chaos, Stands/Fund, Flair/Defend, Fans/Billionaire, Academy/Transfers, Old/New ground, Rival/Cup, Sack/Faith, Never/Sign.</footer>
+</main>
+<script>
+const RAW=`Premier League|AFC Bournemouth|F|100|ABABBABBA=BABBB=BA|
+Premier League|Arsenal|X|71|=AABBAB==ABAB=BBBA|
+Premier League|Aston Villa|M|100|BA===B=BBABBBBABAB|
+Premier League|Brentford|L|2|BBAABBB=AABBB=BAAA|Stevenage
+Premier League|Brighton & Hove Albion|L|99|BBA=BABAAABABABAAA|
+Premier League|Chelsea|B|98|BAABBBB=B=BBB=BBAB|
+Premier League|Coventry City|F|63|AB=A===BBAB=BBAABA|
+Premier League|Crystal Palace|L|88|AB=A=B=BBABBBBA=BA|
+Premier League|Everton|M|62|ABBAABAAB=BBBAAABA|
+Premier League|Fulham|L|100|ABAAB=B=AAB=B=BABA|
+Premier League|Hull City|B|98|ABBA=AA=BBBAB=AABA|
+Premier League|Ipswich Town|L|100|BBA=BABABABABAB=AA|
+Premier League|Leeds United|B|13|ABBAA=AABBB=BAA=BA|Derby County
+Premier League|Liverpool|L|100|AAABAAB=BABAB=A=BA|
+Premier League|Manchester City|F|100|BAABBABBAABABBBBAB|
+Premier League|Manchester United|X|99|AAAB=ABAB=BABAABBA|
+Premier League|Newcastle United|B|71|AB==BB==B=BBB=BABA|
+Premier League|Nottingham Forest|M|89|AA=AB===BBB=B=BBBA|
+Premier League|Sunderland|F|99|AB=AAB=ABBBBBAAABA|
+Premier League|Tottenham Hotspur|B|100|A=ABBAB=B=BAB=BBBA|
+Championship|Birmingham City|F|72|AB=A====BAB=B=AABA|
+Championship|Blackburn Rovers|M|53|ABBAABA=B=BBB=A=BA|
+Championship|Bolton Wanderers|F|70|ABBAABA=B=ABA=AABA|
+Championship|Bristol City|L|63|BBAABBBABABBBABAAA|
+Championship|Cardiff City|L|16|AB==AB==B=BBB=AABA|Plymouth Argyle
+Championship|Charlton Athletic|L|25|ABBAABAAB=BBBAAABA|Everton
+Championship|Derby County|F|23|ABBAABAAB=BBBAAABA|Everton
+Championship|Lincoln City|F|94|=BAABBBA=AABAABABA|
+Championship|Middlesbrough|M|98|ABAA==BABAB=BAAABA|
+Championship|Millwall|F|76|ABBAABA=BABBB=AABA|
+Championship|Norwich City|F|100|ABAABABA==BABABABA|
+Championship|Portsmouth|L|84|=BAAABBABABBBAAABA|
+Championship|Preston North End|L|89|BBBAABA==AABA=AAAA|
+Championship|Queens Park Rangers|L|99|=BBAA=A=BBB=B=AAAA|
+Championship|Sheffield United|B|5|ABBAABAAB=BBBAAABA|Everton
+Championship|Stoke City|F|1|ABBAABA=BBBBB=AABA|Plymouth Argyle
+Championship|Swansea City|B|96|ABABBAB==ABAB=BABA|
+Championship|Watford|B|95|=BABBBBBBBBBBBBABA|
+Championship|West Bromwich Albion|L|99|BB=AAB=AB=BBBAAAAA|
+Championship|West Ham United|B|100|=BABAABABBBABAAABA|
+League One|AFC Wimbledon|L|95|ABAA=BB=BAABA=AABA|
+League One|Barnsley|L|96|=BBAB=A=B=B=B=BAAA|
+League One|Blackpool|B|81|ABA=A=B=B=A=A=AABA|
+League One|Bradford City|B|83|ABAAA=B=BAA=A=AABA|
+League One|Bromley|B|97|BBAABBB=BBBBB=BAAA|
+League One|Burton Albion|L|97|=BBABBA=BBBBB=BAAA|
+League One|Cambridge United|B|80|ABBAA=A=BAA=A=AABA|
+League One|Doncaster Rovers|B|79|AB=A====BAA=A=AABA|
+League One|Huddersfield Town|F|10|=BBA=BA=BBBBB=AAAA|Plymouth Argyle
+League One|Leicester City|L|2|BAABBBBBBBBBBBBBAB|Chelsea
+League One|Leyton Orient|F|93|ABAABBB=BABBB=BABA|
+League One|Luton Town|F|100|ABBAABAABAABAAAABA|
+League One|Mansfield Town|L|98|BBBA==A=BAB=B=BAAA|
+League One|Milton Keynes Dons|W|6|BBAAB=B==BB=B=BAAA|Bromley
+League One|Notts County|L|100|BB==AA==BBBAB=AAAA|
+League One|Oxford United|L|90|BB=AB===BBB=B=B=AA|
+League One|Peterborough United|W|100|AB=ABA=BBBBABBBBBB|
+League One|Plymouth Argyle|M|98|AB=AAB==BBBBB=AABA|
+League One|Reading|L|70|ABAAB=B=B=B=B=BABA|
+League One|Sheffield Wednesday|L|70|AB=AA===B=B=B=AABA|
+League One|Stevenage|M|100|BBAABBB=AABBB=BAAA|
+League One|Stockport County|B|98|AB=ABB==BBBBB=BABA|
+League One|Wigan Athletic|L|41|=B=AB===BBB=B=BAAA|Barnsley
+League One|Wycombe Wanderers|L|2|ABAA=BB==ABBB=AABA|Leyton Orient
+LaLiga|Athletic Club|B|100|BBBAABAABAABAAAAAA|
+LaLiga|Atlético Madrid|F|83|=====B=BBABBBBBABA|
+LaLiga|CA Osasuna|B|74|ABAA=BB=BAABA=AABA|
+LaLiga|Celta Vigo|B|82|ABAA=AB=BBAAA=AABA|
+LaLiga|Deportivo Alavés|B|24|AB=A=B=BBAABABAABA|Racing Santander
+LaLiga|Deportivo La Coruña|F|80|ABAAABB=B=ABA=AABA|
+LaLiga|Elche CF|B|93|AB=AAB==BAABA=AABA|
+LaLiga|FC Barcelona|L|100|BAABBABABBBABAB=AA|
+LaLiga|Getafe CF|F|100|AB=ABB=BBABBBBBBBA|
+LaLiga|Levante UD|B|56|ABBAABABB=ABABAABA|
+LaLiga|Málaga CF|W|46|=BA=BBB=B=BBB=BABA|RCD Mallorca
+LaLiga|Racing Santander|M|100|ABAAABBBB=ABABAABA|
+LaLiga|Rayo Vallecano|L|94|ABBAABABBAABABAABA|
+LaLiga|RCD Espanyol|L|87|AB=ABB==BBBBB=BABA|
+LaLiga|Real Betis|X|100|ABAB=AB=BBAAA=AABA|
+LaLiga|Real Madrid|B|97|BAABB=BB=BB=BBBAAB|
+LaLiga|Real Sociedad|L|100|BBAABABAAAAAAAB=AA|
+LaLiga|Sevilla FC|W|100|AAABBBBBBBBBBBBABB|
+LaLiga|Valencia CF|B|98|ABAAABB=B=BBB=AABA|
+LaLiga|Villarreal CF|F|100|BBABBABAAABABABBAA|
+LaLiga 2|Girona|F|100|BAA=BBBBA=BBBBBBAA|
+LaLiga 2|Granada CF|B|99|A=AABBBBBBBBBBBBBA|
+LaLiga 2|RCD Mallorca|M|96|ABAA=BBBB=BBBBBABA|
+LaLiga 2|Real Valladolid|F|36|ABAA=BBBBBBBBBAABA|RCD Mallorca
+LaLiga 2|UD Las Palmas|L|100|BBAA=AB=B=AAA=AAAA|
+Serie A|AC Milan|W|100|AAAB=BB=BBBBB=A=BB|
+Serie A|AC Monza|M|100|ABAABBBBBBBBBBBBBB|
+Serie A|ACF Fiorentina|L|100|AB=AAA=BBBAAABAABA|
+Serie A|AS Roma|L|100|A=A=ABBBBBBBBBAABA|
+Serie A|Atalanta|F|100|BBA=B=BABAA=AABBAA|
+Serie A|Bologna FC|B|99|ABAABBB==ABBB=BABA|
+Serie A|Cagliari Calcio|B|54|AB=AAB=BBAABABAABA|
+Serie A|Como 1907|F|100|ABA=BBB==BBBB=BBBB|
+Serie A|Frosinone Calcio|X|0|ABAABBBBBBBBBBBBBB|AC Monza
+Serie A|Genoa CFC|W|2|ABAAABBBBBBBBBAABA|AS Roma
+Serie A|Inter Milan|W|98|AAABBBBBBBBBBBBBBB|
+Serie A|Juventus|B|100|BAABB=BB=BB=BBBAAB|
+Serie A|Parma Calcio|F|96|ABAAABB=B=ABA=A=BA|
+Serie A|SS Lazio|B|99|ABBBA=A=BBB=B=AABA|
+Serie A|SSC Napoli|L|61|ABA=ABB=B=ABA=AABA|
+Serie A|Torino FC|B|98|ABAAABBBBAABABAABA|
+Serie A|Udinese Calcio|B|100|BBAABBBABABBBABBAB|
+Serie A|US Lecce|M|60|ABAAABBBBABBBBAABA|
+Serie A|US Sassuolo|L|100|BBAABABAAABABABBAB|
+Serie A|Venezia FC|B|98|ABABB=BBBBB=BBBBBB|
+Serie B|Empoli|F|100|BBBAA=AAAAA=AAAAAA|
+Serie B|Hellas Verona|L|100|=BBA=BA=BBBBB=AABA|
+Serie B|Palermo|F|94|=B=A===BB=B=BBAAAA|
+Serie B|Sampdoria|W|86|=ABA=AA=BBBAB=A=BA|
+Serie B|Vicenza|B|100|=BBA==A=AAA=A=A=BA|
+Bundesliga|Bayer Leverkusen|B|84|BAABB=B=AAB=B=BBAB|
+Bundesliga|Bayern Munich|B|40|=AABB=BB==B=BBBBBB|VfL Wolfsburg
+Bundesliga|Borussia Dortmund|M|100|A=ABBABAB=AAAABABA|
+Bundesliga|Borussia Mönchengladbach|B|73|ABAAAABABAAAAAAABA|
+Bundesliga|Eintracht Frankfurt|M|100|ABAB=ABBBAAAABABBA|
+Bundesliga|FC Augsburg|L|100|BBAA=BBBBBBBBBABAA|
+Bundesliga|FC Köln|B|82|ABAAABB=B=ABA=AABA|
+Bundesliga|Hamburger SV|L|93|A=ABAAB=B=BAB=A=BA|
+Bundesliga|Mainz 05|F|92|ABAAABBABAABAAAABA|
+Bundesliga|RB Leipzig|W|100|BA=BBB===ABBB=BBAB|
+Bundesliga|SC Freiburg|M|92|BBAABBBAAAABAAB=AA|
+Bundesliga|SC Paderborn 07|F|5|ABAA=BB=BAABA=AABA|VfL Bochum
+Bundesliga|Schalke 04|L|89|AB==AB=BB=ABABAABA|
+Bundesliga|SV Elversberg|M|100|B=AABABAB=BABABBAA|
+Bundesliga|TSG Hoffenheim|W|100|B=A=BBBAAABBBABBAB|
+Bundesliga|Union Berlin|B|99|ABBA=BABBAABABAABA|
+Bundesliga|VfB Stuttgart|M|100|ABAB==B=BBB=B=A=BA|
+Bundesliga|Werder Bremen|F|4|ABAAABB=B=ABA=AABA|FC Köln
+2. Bundesliga|1. FC Heidenheim|M|100|=BAA=BBB=ABBBBBBAA|
+2. Bundesliga|1. FC Kaiserslautern|L|100|ABBA=BABBBBBBBAABA|
+2. Bundesliga|1. FC Magdeburg|L|100|A=AAA=B=BAA=A=ABBA|
+2. Bundesliga|1. FC Nürnberg|F|51|ABBAABA=B=ABA=AABA|
+2. Bundesliga|Arminia Bielefeld|X|100|ABAA==B=BAB=B=AABA|
+2. Bundesliga|Dynamo Dresden|B|81|A=BAABA=B=ABA=AABA|
+2. Bundesliga|Eintracht Braunschweig|L|82|BB=AAB=BB=ABABAAAA|
+2. Bundesliga|Energie Cottbus|B|71|=B=AAB=BB=ABABAABA|
+2. Bundesliga|FC St. Pauli|F|96|AB=====ABAA=AAAABA|
+2. Bundesliga|Greuther Fürth|B|99|ABBAA=ABBBA=ABAABA|
+2. Bundesliga|Hannover 96|L|30|ABAA=BBBB=BBBBBABA|VfL Osnabrück
+2. Bundesliga|Hertha BSC|B|56|ABAB=BB=B=BBB=A=BA|
+2. Bundesliga|Holstein Kiel|M|3|ABAA=BB===ABA=AABA|VfL Bochum
+2. Bundesliga|Karlsruher SC|M|100|BBAABBBA==ABAABAAA|
+2. Bundesliga|SV Darmstadt 98|F|96|ABAA=BBBB=ABABAABA|
+2. Bundesliga|VfL Bochum|B|78|ABAA=BB=BAABA=AABA|
+2. Bundesliga|VfL Osnabrück|F|100|ABAAABBBBABBBBAABA|
+2. Bundesliga|VfL Wolfsburg|M|100|A=ABB=BB==B=BBBBBB|
+Ligue 1|AJ Auxerre|B|95|=BAAABBABABBBAAAAA|
+Ligue 1|Angers SCO|F|100|ABAA=BBBB=ABABAABA|
+Ligue 1|AS Monaco|X|100|=AABBBB=ABBBB=BBAB|
+Ligue 1|ESTAC Troyes|B|53|ABA=BBB==BBBB=BABB|
+Ligue 1|FC Lorient|X|84|=BAABBBBB=BBBBBABB|
+Ligue 1|Le Havre AC|F|100|ABAAABBB==BBBBAABA|
+Ligue 1|Le Mans FC|L|100|ABA=B=B=BBB=B=BBBB|
+Ligue 1|Lille OSC|L|98|BAABBBB=AABBB=BBAB|
+Ligue 1|OGC Nice|B|96|ABAA=BBB=BBBBBBABA|
+Ligue 1|Olympique de Marseille|L|100|A=B=ABABBBBBBBAABA|
+Ligue 1|Olympique Lyonnais|L|100|AB=BBB==B=BBB=BABB|
+Ligue 1|Paris FC|B|100|ABAAB=B=A=B=B=BBBB|
+Ligue 1|Paris Saint-Germain|X|13|AAABB=B==BB=B=BBBB|Le Mans FC
+Ligue 1|RC Lens|W|100|=B=AAB==B=BBB=AAAA|
+Ligue 1|RC Strasbourg Alsace|L|100|A===BB=BBBBBBBBABA|
+Ligue 1|Stade Brestois 29|B|94|=BAABBB=B=ABA=B=AA|
+Ligue 1|Stade Rennais|F|100|=AAA==BA=BB=BAB=BA|
+Ligue 1|Toulouse FC|L|23|=BAABBBBB=BBBBB=BB|FC Lorient
+Ligue 2|FC Nantes|L|100|BBAAAABABBBABAA=AA|
+Ligue 2|Montpellier HSC|L|100|A=AABBB=B=ABA=BBBA|
+Ligue 2|Saint-Étienne|B|100|==BAABABBBBBBBABAA|
+Eredivisie|Ajax|F|100|BAAB=ABA==AAAAA=AA|
+Eredivisie|Feyenoord|M|100|ABAA=BBBB=ABABAABA|
+Eredivisie|PSV Eindhoven|L|100|BAAABBB=AAABA=BBAB|
+Scottish Premiership|Celtic FC|X|100|AAA=A=B=B=B=B=AABA|
+Scottish Premiership|Rangers FC|F|100|=A==A==BBAB=BBA=BA|
+Super League Greece|Olympiacos FC|M|100|=A==BB=B=BBBBBBBAB|
+Super League Greece|Panathinaikos|M|21|=B=AA===B=B=B=A=BA|Beşiktaş
+HNL|GNK Dinamo Zagreb|B|100|A=BAA=AABBA=AAAABA|
+Czech First League|SK Slavia Praha|L|76|=A======BAB=B=BAAA|
+Süper Lig|Beşiktaş|M|81|ABAA=BBBBBBBBBAABA|
+Süper Lig|Fenerbahçe|M|95|A=AB=BBBBBBBBBAABA|
+Süper Lig|Galatasaray|X|99|AAAB=BBBB=BBBBABBB|
+`,RR=`Brentford|Everywhere|L|100|BBAABBB=AAABB=BAAB
+Leeds United|England|B|100|ABBAAAAABBBABAABBB
+Cardiff City|England|L|70|AB=BAB==BAABA=AABA
+Charlton Athletic|England|M|61|ABBAABAAB=BBAAAABA
+Derby County|England|F|50|ABBAABAAB=BBBABABA
+Sheffield United|England|B|91|ABBAABAAB=BBAABAAB
+Stoke City|England|F|84|ABBAABA=BBBBA=AAAB
+Huddersfield Town|England|L|94|=BBA=BA=BBABB=BAAB
+Leicester City|Everywhere|B|100|BAABBBBBBBBBABABAA
+Milton Keynes Dons|Everywhere|L|65|BBAABAB=ABBAB=BAAA
+Wigan Athletic|England|B|96|=B=AB===BBA=A=AAAB
+Wycombe Wanderers|England|W|100|ABAA=BB=AABBB=AABA
+Deportivo Alavés|Spain|F|98|AB=A=B=BBAABBBBABA
+Málaga CF|Spain|B|100|=BA=BBB=B=ABB=BAAA
+Real Valladolid|Spain|W|80|ABAA=BBBBBBBBBAAAB
+Frosinone Calcio|Italy|B|100|ABAABBBBBBABABBBBA
+Genoa CFC|Italy|M|93|ABAAABBBBBABBBAAAB
+Bayern Munich|Germany|B|100|=AABB=BB==A=BBBBBB
+SC Paderborn 07|Everywhere|X|100|ABAA=BB=BAABB=BABB
+Werder Bremen|Germany|W|91|ABAAABB=A=ABA=ABBB
+Hannover 96|Germany|F|95|ABAA=BBBB=ABBBBABB
+Holstein Kiel|Germany|L|51|ABAA=BB=A=ABA=AABA
+Paris Saint-Germain|France|F|98|AAABB=B=ABB=B=BBBB
+Toulouse FC|France|B|81|=BAABBBBB=BBBBBBBB
+Panathinaikos|Rest of the World|B|74|=B=AA=A=B=B=B=A=BA
+`;
+const CARDS=[["Fun","Work"],["Moments","Surviving"],["People","Quiet"],["Home","The road"],["Memory","Tomorrow"],["4-3","1-0 grind"],["Regulars' bar","Anyone's place"],["Build it","Buy it"],["Stroll","Rollercoaster"],["Fully planned","No plan"],["The stands","A fund"],["Flair","Defending"],["The fans","Billionaire"],["Academy","Transfers"],["Old ground","New 60,000"],["Rival twice","The cup"],["Sack him","Keep faith"],["Never","Sign him"]];
+const DOORS=new Set([10,12,14,16,17]);
+const CHIP={L:"Love",B:"Belonging",W:"Winning",F:"Fortune",M:"Fame and fortune",X:"Belonging and winning"};
+const CTRY={"Premier League":"England","Championship":"England","League One":"England","LaLiga":"Spain","LaLiga 2":"Spain","Serie A":"Italy","Serie B":"Italy","Bundesliga":"Germany","2. Bundesliga":"Germany","Ligue 1":"France","Ligue 2":"France"};
+const clubs=RAW.trim().split("\n").map(l=>{const[lg,n,c,r,p,land]=l.split("|");return{lg,n,c,r:+r,p,land,ct:CTRY[lg]||"Rest of the World"}});
+const rr=RAW&&RR.trim().split("\n").map(l=>{const[n,ct,c,r,p]=l.split("|");return{n,ct,c,r:+r,p}});
+const byName=Object.fromEntries(clubs.map(c=>[c.n,c]));
+const col=v=>v==="A"?"var(--a)":v==="B"?"var(--b)":"var(--both)";
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const tapsHTML=(p,base)=>'<div class="taps" aria-hidden="true">'+[...p].map((v,i)=>`<i class="${DOORS.has(i)?"door ":""}${i===5?"sep ":""}${base&&base[i]!==v?"d":""}" style="--c:${col(v)}" title="${CARDS[i][0]} / ${CARDS[i][1]}: ${v==="A"?CARDS[i][0]:v==="B"?CARDS[i][1]:"Both"}"></i>`).join("")+"</div>";
+const roomCls=r=>r>=100?"r100":r>=80?"r80":"rlow";
+
+/* hero */
+const sel=document.getElementById("heroSel");
+sel.innerHTML=clubs.slice().sort((a,b)=>a.n.localeCompare(b.n)).map(c=>`<option>${esc(c.n)}</option>`).join("");
+function hero(name){
+  const c=byName[name];sel.value=name;
+  const svg=document.getElementById("heroSvg");const W=1000,x0=40,dx=(W-80)/17,yA=60,yM=110,yB=160;
+  const pts=[...c.p].map((v,i)=>[x0+i*dx,v==="A"?yA:v==="B"?yB:yM]);
+  let s=`<line x1="${x0}" x2="${W-40}" y1="${yA}" y2="${yA}" stroke="var(--line)" stroke-dasharray="3 6"/><line x1="${x0}" x2="${W-40}" y1="${yB}" y2="${yB}" stroke="var(--line)" stroke-dasharray="3 6"/>`;
+  s+=`<rect x="${x0+4.5*dx-1}" y="30" width="2" height="160" fill="var(--line)"/><text x="${x0}" y="22" font-size="12" font-weight="600">Life</text><text x="${x0+5*dx}" y="22" font-size="12" font-weight="600">Likes and football</text>`;
+  const d=pts.map((p,i)=>(i?"L":"M")+p[0]+" "+p[1]).join(" ");
+  s+=`<path d="${d}" fill="none" stroke="var(--road)" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" opacity=".18"/><path class="walk" d="${d}" fill="none" stroke="var(--road)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>`;
+  pts.forEach((p,i)=>{const v=c.p[i];s+=DOORS.has(i)?`<rect x="${p[0]-8}" y="${p[1]-8}" width="16" height="16" rx="3" fill="${col(v)}"/>`:`<circle cx="${p[0]}" cy="${p[1]}" r="8" fill="${col(v)}"/>`;
+    const lab=v==="A"?CARDS[i][0]:v==="B"?CARDS[i][1]:"Both";
+    s+=`<text transform="translate(${p[0]} 196) rotate(40)" font-size="11">${esc(lab)}</text>`});
+  svg.innerHTML=s;
+  const v=document.getElementById("heroVerdict");
+  v.innerHTML=c.land?`<span class="miss">${c.r}%, lands ${esc(c.land)} on the file path</span>`:`${CHIP[c.c]} chip, ${c.r}% room${c.r<80?", Closest match":""}`;
+}
+sel.onchange=()=>hero(sel.value);hero("Chelsea");
+
+/* facts */
+const N=clubs.length,cnt=(i,v)=>clubs.filter(c=>c.p[i]===v).length;
+const doorMatch=clubs.filter(c=>(c.p[10]==="A")===(c.p[12]==="A")).length;
+const lands=clubs.filter(c=>!c.land),misses=clubs.filter(c=>c.land);
+const groups={};clubs.forEach(c=>{const k=c.ct+"|"+c.p;(groups[k]=groups[k]||[]).push(c.n)});
+const twins=Object.values(groups).filter(g=>g.length>1);const twinN=twins.reduce((a,g)=>a+g.length-1,0);
+const pct=x=>Math.round(x/N*100);
+const facts=[
+ [`<b>${N} clubs</b> across ${new Set(clubs.map(c=>c.lg)).size} leagues; ${lands.length} land as Your club on a straight file path.`],
+ [`<b>${lands.filter(c=>c.r>=100).length} land at 100%</b>, ${lands.filter(c=>c.r>=80&&c.r<100).length} at 80 to 99%, ${lands.filter(c=>c.r<80).length} show "Closest match".`],
+ [`<b>${misses.length} misses</b> need a reroute; ${twinN} of them have a file path identical to a same-country club.`,1],
+ [`<b>Stands/Fund and Fans/Billionaire agree on ${doorMatch} of ${N} paths</b>, so two doors carry one signal.`,1],
+ [`<b>${pct(cnt(12,"B"))}% of clubs tap Billionaire</b>, including Liverpool, Arsenal and Manchester United.`,1],
+ [`<b>Never/Sign is Never for ${pct(cnt(17,"A"))}%</b> and Sack/Faith is Keep faith for ${pct(cnt(16,"B"))}%, so both doors split few clubs.`],
+ [`<b>Everton is the deepest well</b>: it holds Charlton, Derby and Sheffield United, and Leeds falls to Derby.`]];
+document.getElementById("facts").innerHTML=facts.map(f=>`<li class="${f[1]?"w":""}">${f[0]}</li>`).join("");
+
+/* bars */
+document.getElementById("bars").innerHTML=CARDS.map((cd,i)=>{const a=cnt(i,"A"),b=cnt(i,"B"),m=N-a-b,top=Math.max(a,b,m);
+ return `<div class="bar"><div class="lbl">${esc(cd[0])} / ${esc(cd[1])}${DOORS.has(i)?"<em>door</em>":""}</div><div class="track" role="img" aria-label="${a} ${esc(cd[0])}, ${m} Both, ${b} ${esc(cd[1])}"><i style="width:${a/N*100}%;background:var(--a)"></i><i style="width:${m/N*100}%;background:var(--both)"></i><i style="width:${b/N*100}%;background:var(--b)"></i></div><div class="pct">${Math.round(top/N*100)}% one way</div></div>`}).join("");
+
+/* wells */
+const wells={};misses.forEach(c=>{(wells[c.land]=wells[c.land]||[]).push(c)});
+document.getElementById("wells").innerHTML=Object.entries(wells).sort((a,b)=>b[1].length-a[1].length).map(([host,list])=>{const h=byName[host];const tw=list.some(c=>c.p===h.p);
+ return `<div class="well${tw?" twin":""}"><h3>${esc(host)}</h3>${tw?'<div class="tag">Identical path</div>':""}<ul>${list.map(c=>`<li>${esc(c.n)} <span class="miss">${c.p===h.p?"same path":"differs on "+[...c.p].filter((v,i)=>v!==h.p[i]).length}</span></li>`).join("")}</ul></div>`}).join("");
+
+/* reroutes */
+document.querySelector("#rr tbody").innerHTML=rr.map(r=>{const f=byName[r.n];const ch=[...r.p].map((v,i)=>v!==f.p[i]?i:-1).filter(i=>i>=0);
+ return `<tr><td><button class="lnk" data-n="${esc(r.n)}">${esc(r.n)}</button></td><td>${esc(r.ct)}</td><td>${CHIP[r.c]}</td><td class="n"><span class="room ${roomCls(r.r)}">${r.r}%</span></td><td>${ch.map(i=>`${esc(r.p[i]==="A"?CARDS[i][0]:r.p[i]==="B"?CARDS[i][1]:"Both")}`).join(", ")||"Country only"}</td><td>${tapsHTML(r.p,f.p)}</td></tr>`}).join("");
+
+/* all */
+const lg=document.getElementById("lg");lg.innerHTML='<option value="">All leagues</option>'+[...new Set(clubs.map(c=>c.lg))].map(l=>`<option>${esc(l)}</option>`).join("");
+function renderAll(){const L=lg.value,Q=document.getElementById("q").value.toLowerCase(),B=document.getElementById("band").value;
+ const rows=clubs.filter(c=>(!L||c.lg===L)&&(!Q||c.n.toLowerCase().includes(Q))&&(!B||(B==="miss"?c.land:!c.land&&(B==="100"?c.r>=100:B==="80"?c.r>=80&&c.r<100:c.r<80))));
+ document.querySelector("#all tbody").innerHTML=rows.map(c=>`<tr><td><button class="lnk" data-n="${esc(c.n)}">${esc(c.n)}</button>${c.land?`<br><span class="miss">lands ${esc(c.land)}</span>`:""}</td><td>${esc(c.lg)}</td><td>${CHIP[c.c]}</td><td class="n"><span class="room ${roomCls(c.land?0:c.r)}">${c.r}%</span></td><td>${tapsHTML(c.p)}</td></tr>`).join("")||'<tr><td colspan="5">No clubs match. Clear the search or pick another league.</td></tr>'}
+["lg","q","band"].forEach(id=>document.getElementById(id).addEventListener("input",renderAll));renderAll();
+document.addEventListener("click",e=>{const b=e.target.closest("button.lnk");if(b){hero(b.dataset.n);document.querySelector(".hero").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}});
+
+/* fix list */
+document.getElementById("fix").innerHTML=[
+ ["Split the two money doors.",`Stands/Fund and Fans/Billionaire never disagree on a file path. Re-vector them so one is about ownership and the other about who the club serves.`],
+ ["Give every identical twin a tiebreaker.",`${twins.length} groups share an exact path inside one country. Each needs at least one card where they differ.`],
+ ["Fix Billionaire for fan-owned feelings.",`Liverpool, Arsenal, Manchester United and Spurs all tap Billionaire. Check whether real fans would.`],
+ ["Make Never/Sign and Sack/Faith earn their slot.",`Both lean one way for most clubs. Either sharpen the wording or replace one door.`],
+ ["Drain the Everton well.",`Pull Charlton, Derby and Sheffield United apart on Old/New ground or the Fans door, as the reroutes already show.`],
+ ["Retest after each change.",`Rerun the sheet; the target is fewer than 10 misses with no "Everywhere" reroutes.`]
+].map(([t,d])=>`<li><b>${t}</b>${d}</li>`).join("");
+if("serviceWorker" in navigator){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}
+</script></body></html>
